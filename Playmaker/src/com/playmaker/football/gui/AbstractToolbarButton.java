@@ -30,6 +30,7 @@ public abstract class AbstractToolbarButton extends View
 	private void initialize()
 	{
 		paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+		paint.setStrokeWidth(stroke);
 		
 		backgroundColor = context.getResources().getColor(android.R.color.black);
 		this.setBackgroundColor(backgroundColor);
