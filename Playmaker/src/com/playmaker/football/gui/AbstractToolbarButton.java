@@ -29,6 +29,8 @@ public abstract class AbstractToolbarButton extends View
 	
 	private void initialize()
 	{
+		this.setPadding(border, border, border, border);
+		
 		paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		paint.setStrokeWidth(stroke);
 		
