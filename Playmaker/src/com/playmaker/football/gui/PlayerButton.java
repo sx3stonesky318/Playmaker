@@ -30,5 +30,6 @@ public class PlayerButton extends AbstractToolbarButton
 		
 		paint.setColor(this.getBackgroundColor());
 		c.drawCircle(centerX, centerY, radius-stroke, paint);
-	} 
+	}
+
 }

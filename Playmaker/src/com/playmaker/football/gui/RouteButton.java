@@ -1,9 +1,12 @@
 package com.playmaker.football.gui;
 
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Path;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+
+import com.playmaker.football.R;
 
 public class RouteButton extends AbstractToolbarButton
 {
@@ -18,39 +21,28 @@ public class RouteButton extends AbstractToolbarButton
 		
 	}
 	
-	public void draw(Canvas c)
+	@Override
+	protected void onLayout(boolean changed, int l, int t, int r, int b) 
 	{
-		super.draw(c);
+		this.removeAllViews();
 		
-		this.setBackgroundDrawable(context.getResources().getDrawable(com.playmaker.football.R.drawable.arrow));
-
-		/*
-		paint.setARGB(127, 255, 255, 255);
+		RelativeLayout rl = new RelativeLayout(context);
+		LayoutParams lps = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		rl.setLayoutParams(lps);
 		
-		int circleRadius = (this.getWidth() > this.getHeight()/2 ? this.getHeight()/2 : this.getWidth())/2 - border;
-		int centerX = this.getWidth()/2;
-		int centerY = this.getHeight()*3/4;
-		int hStroke = stroke/2;
+		View v = new View(context);
 		
-		//  Draw route
-		Path path = new Path();
-		path.moveTo(centerX, centerY);
-		path.lineTo(centerX-hStroke, centerY);
-		path.lineTo(centerX-hStroke, this.getHeight()/4);
-		path.lineTo(centerX-hStroke-hStroke, this.getHeight()/4);
-		path.lineTo(centerX, this.getHeight()/4-2*stroke);
-		path.lineTo(centerX+hStroke+hStroke, this.getHeight()/4);
-		path.lineTo(centerX+hStroke, this.getHeight()/4);
-		path.lineTo(centerX+hStroke, centerY);
-		path.close();
+		int size = (this.getWidth() > this.getHeight() ? this.getHeight() : this.getWidth());
+		Log.i("Route Button", this.getWidth() + " -- " + this.getHeight());
 		
-		c.drawPath(path, paint);
+		RelativeLayout.LayoutParams rlps = new RelativeLayout.LayoutParams(size, size);
+		rlps.addRule(RelativeLayout.CENTER_IN_PARENT);
+		v.setBackgroundResource(R.drawable.arrow);
+		v.setLayoutParams(rlps);
 		
-		//  Draw Player
-		c.drawCircle(centerX, centerY, circleRadius, paint);
+		rl.addView(v, rlps);
 		
-		paint.setColor(Color.BLACK);
-		c.drawCircle(centerX, centerY, circleRadius-stroke, paint);
-		*/
-	}
+		this.addView(rl, lps);
+		this.addView(new Button(context), lps);
+	} 
 }

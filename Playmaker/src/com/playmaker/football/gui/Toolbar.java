@@ -33,7 +33,12 @@ public class Toolbar extends LinearLayout
 		if(this.getChildCount() > 0)
 			super.addView(new LineDivision(this.getContext()));
 		
-		super.addView(v);
+		LinearLayout.LayoutParams lps = new LinearLayout.LayoutParams(v.getLayoutParams());
+		lps.width = LayoutParams.MATCH_PARENT;
+		lps.height = LayoutParams.MATCH_PARENT;
+		lps.weight = 1f;
+		
+		super.addView(v, lps);
 	}
 	
 	private class LineDivision extends LinearLayout

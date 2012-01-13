@@ -2,16 +2,14 @@ package com.playmaker.football.gui;
 
 import android.content.Context;
 import android.graphics.Paint;
-import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
+import android.view.ViewGroup;
 
-public abstract class AbstractToolbarButton extends View
+public abstract class AbstractToolbarButton extends ViewGroup
 {
 	protected Context context;
 	protected int border;
 	protected int stroke;
 	protected Paint paint;
-	
 	
 	private int backgroundColor;
 	private boolean selected = false;
@@ -37,7 +35,7 @@ public abstract class AbstractToolbarButton extends View
 		backgroundColor = context.getResources().getColor(android.R.color.black);
 		this.setBackgroundColor(backgroundColor);
 		
-		LayoutParams lps = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 1f);
+		LayoutParams lps = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 		this.setLayoutParams(lps);
 		
 		this.invalidate();
@@ -84,4 +82,10 @@ public abstract class AbstractToolbarButton extends View
 	{
 		return backgroundColor;
 	}
+	
+	@Override
+	protected void onLayout(boolean changed, int l, int t, int r, int b) {
+		// TODO Auto-generated method stub
+		
+	} 
 }
